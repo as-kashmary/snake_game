@@ -5,7 +5,7 @@ class Snake:
     def __init__(self):
         self.segments=[];
         self.body();
-
+        self.head=self.segments[0];
 
     def body(self):
         for pos in POSITION:
@@ -20,16 +20,20 @@ class Snake:
             x = self.segments[num - 1].xcor();
             y = self.segments[num - 1].ycor();
             self.segments[num].goto(x, y);
-        self.segments[0].forward(20)
+        self.head.forward(20)
 
     def up(self):
-        self.segments[0].seth(90)
+        if self.head.heading() !=270:
+            self.head.seth(90)
 
     def down(self):
-        self.segments[0].seth(270)
+        if self.head.heading() != 90:
+            self.head.seth(270)
 
     def east(self):
-        self.segments[0].seth(0)
+        if self.head.heading() !=180:
+            self.head.seth(0)
 
     def west(self):
-        self.segments[0].seth(180)
+        if self.head.heading() != 0:
+            self.head.seth(180)
