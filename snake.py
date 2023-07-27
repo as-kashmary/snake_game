@@ -1,6 +1,7 @@
 from turtle import Turtle
 
 POSITION=[(0,0),(-20,0),(-40,0)]
+
 class Snake:
     def __init__(self):
         self.segments=[];
@@ -9,11 +10,18 @@ class Snake:
 
     def body(self):
         for pos in POSITION:
-            segment = Turtle("square");
-            segment.color("white");
-            segment.penup();
-            segment.goto(pos);
-            self.segments.append(segment);
+            self.add_seg(pos);
+    def add_seg(self,pos):
+        segment = Turtle("square");
+        segment.color("white");
+        segment.penup();
+        segment.goto(pos);
+        self.segments.append(segment);
+
+    def extend(self):
+        self.add_seg(self.segments[len(self.segments)-1].pos());
+
+
 
     def move(self):
         for num in range(len(self.segments) - 1, 0, -1):
