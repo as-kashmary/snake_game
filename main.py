@@ -34,6 +34,7 @@ while game_start:
         snake.extend();
 
     if snake.head.xcor()>280 or snake.head.xcor()<-280 or snake.head.ycor()>280 or snake.head.ycor()<-280 :
+        scor.reset();
         game_start=False;
 
 
@@ -41,6 +42,7 @@ while game_start:
         if s== snake.head:
             pass;
         elif s.distance(snake.head) <10:
+            scor.reset();
             game_start=False;
 
 w=Turtle();
